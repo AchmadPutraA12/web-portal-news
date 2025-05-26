@@ -1,0 +1,29 @@
+.nav-link.active {
+  color: #f25f0d !important;
+  font-weight: bold;
+  position: relative;
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f25f0d;
+}
+
+.btn-outline-orange {
+  border: 1px solid #f25f0d;
+  color: #f25f0d;
+}
+
+.btn-outline-orange:hover {
+  background-color: #f25f0d;
+  color: white;
+}
+
+.navbar-brand img {
+  height: 45px;
+}
