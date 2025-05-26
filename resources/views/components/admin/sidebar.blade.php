@@ -47,12 +47,21 @@
         <h5 class="fw-bold">Dashboard</h5>
         <nav class="nav flex-column">
             <a href="#" class="nav-link ps-0 text-white">Profil</a>
-            <a href="{{ route('admin.user.index') }}" class="nav-link ps-0 text-white">User</a>
-            <a href="{{ route('admin.verifikasi-article.index') }}" class="nav-link ps-0 text-white">Verifikasi Artikel</a>
+            @if (Auth::user()->role == 'admin')
+                <a href="{{ route('admin.user.index') }}" class="nav-link ps-0 text-white">User</a>
+                <a href="{{ route('admin.verifikasi-article.index') }}" class="nav-link ps-0 text-white">Verifikasi
+                    Artikel</a>
+            @endif
             <a href="{{ route('admin.article.index') }}" class="nav-link ps-0 text-white">Artikel</a>
         </nav>
     </div>
     <div class="mt-4">
-        <button class="btn btn-light text-danger fw-bold">Logout</button>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+        <a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="material-icons-outlined">power_settings_new</i> Logout
+        </a>
     </div>
 </div>
