@@ -33,13 +33,11 @@ class GuestController extends Controller
 
     public function category($id)
     {
-        $category = CategoryArticle::findOrFail($id);
-        $articles = Article::where('category_id', $category->id)
-            ->where('is_verified', 1)
-            ->latest()
-            ->get();
+        $category = CategoryArticle::with(['articles' => function ($q) {
+            $q->where('is_verified', 1)->latest();
+        }])->findOrFail($id);
 
-        return view('pages.guest.category', compact('category', 'articles'));
+        return view('pages.guest.category', compact('category'));
     }
 
     /**
@@ -61,9 +59,11 @@ class GuestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $article = Article::with('category')->findOrFail($id);
+
+        return view('pages.guest.article-detail', compact('article'));
     }
 
     /**

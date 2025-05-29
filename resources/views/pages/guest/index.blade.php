@@ -117,7 +117,10 @@
                                     class="card-img-top" alt="{{ $article->title }}">
                                 <div class="card-body">
                                     <p class="card-text">
-                                        {{ Str::limit($article->title, 80) }}
+                                        <a href="{{ route('article.detail', $article->id) }}"
+                                            class="text-decoration-none text-dark">
+                                            {{ Str::limit($article->title, 80) }}
+                                        </a>
                                     </p>
                                 </div>
                             </div>
