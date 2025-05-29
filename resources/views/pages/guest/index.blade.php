@@ -68,7 +68,7 @@
         <div class="row g-4 align-items-start">
             <div class="col-md-8 text-center">
                 <img src="{{ asset('storage/' . ($latestArticle->image_1 ?? 'default.jpg')) }}"
-                    alt="{{ $latestArticle->title }}" class="img-fluid rounded shadow-sm"
+                    alt="{{ @$latestArticle->title }}" class="img-fluid rounded shadow-sm"
                     style="max-height: 600px; object-fit: cover;">
             </div>
 
