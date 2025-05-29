@@ -10,6 +10,9 @@ class ArticleDataTable
     {
         return DataTables::of($query)
             ->addIndexColumn()
+            ->editColumn('category_id', function ($row) {
+                return $row->category ? $row->category->name : '-';
+            })
             ->editColumn('is_verified', function ($row) {
                 return $row->is_verified
                     ? '<span class="badge bg-success">Disetujui</span>'

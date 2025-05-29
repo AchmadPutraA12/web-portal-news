@@ -46,8 +46,8 @@
                     searchable: false
                 },
                 {
-                    data: 'category',
-                    name: 'category'
+                    data: 'category_id',
+                    name: 'category_id'
                 },
                 {
                     data: 'title',
@@ -126,7 +126,7 @@
             $('#addArticleModalLabel').text('Edit Article');
             $('#formArticle')[0].reset();
             $('#id').val(article.id);
-            $('[name="category"]').val(article.category);
+            $('[name="category_id"]').val(article.category_id);
             $('[name="title"]').val(article.title);
             $('[name="content"]').val(article.content);
             $('[name="content_article"]').val(article.content_article);

@@ -25,12 +25,15 @@
                             KATEGORI
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="kategoriDropdown">
-                            <li><a class="dropdown-item" href="{{ url('/kategori/bisnis') }}">BISNIS</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/kategori/keuangan') }}">KEUANGAN</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/kategori/olahraga') }}">OLAHRAGA</a></li>
-                            <li><a class="dropdown-item" href="{{ url('/kategori/internasional') }}">INTERNASIONAL</a>
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url('/kategori/budaya') }}">BUDAYA</a></li>
+                            @forelse ($navCategories as $cat)
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('category', $cat->id) }}">
+                                        {{ strtoupper($cat->name) }}
+                                    </a>
+                                </li>
+                            @empty
+                                <li><span class="dropdown-item text-muted">Belum ada kategori</span></li>
+                            @endforelse
                         </ul>
                     </li>
                 </ul>

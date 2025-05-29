@@ -10,12 +10,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
-                        <select name="category" class="form-control" required>
+                        <label for="category_id" class="form-label">Category <span class="text-danger">*</span></label>
+                        <select name="category_id" class="form-control" required>
                             <option value="">-- Pilih Category --</option>
-                            <option value="1">Humas</option>
-                            <option value="2">Tik</option>
-                            <option value="3">Tipol</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">

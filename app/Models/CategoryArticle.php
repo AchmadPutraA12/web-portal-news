@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
-class Article extends Model
+class CategoryArticle extends Model
 {
     use HasFactory, Notifiable, SoftDeletes;
 
@@ -15,8 +15,8 @@ class Article extends Model
         'id'
     ];
 
-    public function category()
+    public function articles()
     {
-        return $this->belongsTo(CategoryArticle::class, 'category_id');
+        return $this->hasMany(Article::class, 'category_id');
     }
 }

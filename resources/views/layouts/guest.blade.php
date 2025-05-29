@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    @include('components.guest.navbar')
+    <x-guest.navbar /> 
     <main>
         @yield('content')
     </main>

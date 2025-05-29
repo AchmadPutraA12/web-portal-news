@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Datatables\Admin\ArticleDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\CategoryArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -17,12 +18,14 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $article = Article::all();
+            $article = Article::with('category')->get();
             return ArticleDataTable::make($article);
         }
 
+        $categories = CategoryArticle::all();
         return view('pages.admin.article.index', [
             'title' => 'Data Article',
+            'categories' => $categories,
         ]);
     }
 
@@ -32,7 +35,7 @@ class ArticleController extends Controller
     public function index2(Request $request)
     {
         if ($request->ajax()) {
-            $article = Article::where('is_verified', 0)->get();
+            $article = Article::with('category')->where('is_verified', 0)->get();
             return ArticleDataTable::make($article);
         }
 
@@ -55,7 +58,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category' => 'required|in:1,2,3',
+            'category_id' => 'required|in:1,2,3',
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'content_article' => 'required|string',
@@ -116,7 +119,7 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'category' => 'required|in:1,2,3',
+            'category_id' => 'required|in:1,2,3',
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'content_article' => 'required|string',

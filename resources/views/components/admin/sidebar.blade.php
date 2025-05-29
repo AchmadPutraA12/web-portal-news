@@ -51,6 +51,7 @@
                 <a href="{{ route('admin.user.index') }}" class="nav-link ps-0 text-white">User</a>
                 <a href="{{ route('admin.verifikasi-article.index') }}" class="nav-link ps-0 text-white">Verifikasi
                     Artikel</a>
+                <a href="{{ route('admin.category-article.index') }}" class="nav-link ps-0 text-white">Category Article</a>
             @endif
             <a href="{{ route('admin.article.index') }}" class="nav-link ps-0 text-white">Artikel</a>
         </nav>
