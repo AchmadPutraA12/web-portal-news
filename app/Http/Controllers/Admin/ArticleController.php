@@ -58,7 +58,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'category_id' => 'required|in:1,2,3',
+            'category_id' => 'required',
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'content_article' => 'required|string',
@@ -119,7 +119,7 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'category_id' => 'required|in:1,2,3',
+            'category_id' => 'required',
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'content_article' => 'required|string',
